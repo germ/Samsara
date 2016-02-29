@@ -1,0 +1,37 @@
+<!-- NOTE: This file is hardcoded into main.go -->
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+	align:			center;
+	margin-left:	auto;
+	margin-right:	auto;
+	text-align:		center;
+}
+img {
+	width: 	30%;
+	height: 30%;
+}
+</style>
+</head>
+<body>
+<h2>Current: [ {{ humanSpeed .Session.DownloadSpeed }} | {{ humanSpeed .Session.UploadSpeed }} ]</h1>
+<h3>Limits: [ {{ .Stats.AltSpeedUp }} Kb/s | {{ .Stats.AltSpeedDown }} Kb/s ]</h1>
+
+{{ if .Stats.AltSpeedEnabled }}
+<a href="/?enable=false"><img src="/static/slow.jpg"/></a>
+<p>{{ .Quote }}</p>
+{{ else }}
+<a href="/?enable=true"><img src="/static/fast.jpg"/></a>
+<p>OPERATIONAL STATUS: VTEC</p>
+{{ end }}
+
+<p>
+	[ <a href="/">Home</a> ] 
+	[ <a href="/pocket">Pocket</a> ] 
+	[ <a href="/add">Add</a> ] 
+	[ <a href="/version">Version</a> ] 
+</p>
+</body>
+</html>
